@@ -3,9 +3,4 @@ cd "$(dirname "$0")"
 git pull
 git submodule sync
 git submodule update
-read -p "This may overwrite existing files in your home directory. Are you sure? (y/n) " -n 1
-echo
-if [[ $REPLY =~ ^[Yy]$ ]]; then
-  rsync --exclude ".git/" --exclude ".DS_Store" --exclude "bootstrap.sh" --exclude "README.md" --exclude ".gitignore" --exclude ".gitsubmodules" --exclude ".configure" -av . ~
-fi
-source "$HOME/.bash_profile"
+rsync --exclude ".git/" --exclude ".DS_Store" --exclude "bootstrap.sh" --exclude "README.md" --exclude ".gitignore" --exclude ".gitsubmodules" --exclude ".configure" -av . ~
